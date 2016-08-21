@@ -13,7 +13,7 @@ public class UserRolesPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column
+	@Column(name="user_name")
 	private String userName;
 	@Column
 	@Enumerated(EnumType.STRING)

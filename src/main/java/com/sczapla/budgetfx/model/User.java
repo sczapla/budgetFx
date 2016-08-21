@@ -18,6 +18,7 @@ import javax.persistence.Version;
 public class User implements Serializable {
 
 	@Id
+        @Column(name="user_name")
 	private String userName;
 	@Column
 	private String password;

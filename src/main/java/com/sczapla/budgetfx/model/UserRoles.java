@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name = "user_roles")
 public class UserRoles implements Serializable {
 
 	@EmbeddedId

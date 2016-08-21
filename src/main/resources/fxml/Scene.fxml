@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="279.0" prefWidth="439.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.sczapla.budgetfx.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="279.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sczapla.budgetfx.FXMLController">
    <children>
       <BorderPane prefHeight="279.0" prefWidth="439.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
@@ -35,7 +35,7 @@
                         <TextField fx:id="txPass" />
                      </children>
                   </HBox>
-                  <Button fx:id="btLogin" mnemonicParsing="false" prefHeight="31.0" prefWidth="254.0" text="Zaloguj" />
+                  <Button fx:id="btLogin" mnemonicParsing="false" onAction="#btLoginAction" prefHeight="31.0" prefWidth="254.0" text="Zaloguj" />
                </children>
             </VBox>
          </center>
