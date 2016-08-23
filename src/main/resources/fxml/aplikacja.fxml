@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutY="107.0" prefHeight="479.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="107.0">
+        <tabs>
+          <Tab text="Podsumowanie">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Accordion layoutX="14.0" layoutY="14.0" prefHeight="475.0" prefWidth="246.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="14.0">
+                          <panes>
+                            <TitledPane animated="false" text="untitled 1">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Kategorie">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" prefHeight="789.0" prefWidth="202.0" text="untitled 3">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                        <PieChart layoutX="278.0" layoutY="14.0" prefHeight="461.0" prefWidth="562.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Zarządzanie">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="274.0" layoutY="23.0" prefHeight="458.0" prefWidth="566.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Analizowanie">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="766.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="156.0" text="Wyloguj" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Użytkownik:" />
+      <TextField editable="false" layoutX="102.0" layoutY="14.0" prefHeight="31.0" prefWidth="150.0" />
+      <Label layoutX="268.0" layoutY="19.0" text="Rola:" />
+      <TextField editable="false" layoutX="314.0" layoutY="14.0" />
+      <Label layoutX="14.0" layoutY="69.0" text="Data rachunków od" />
+      <DatePicker layoutX="151.0" layoutY="64.0" />
+      <Label layoutX="402.0" layoutY="69.0" prefHeight="21.0" prefWidth="24.0" text="do" />
+      <DatePicker layoutX="433.0" layoutY="64.0" />
+      <Button layoutX="765.0" layoutY="64.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="156.0" text="Filtruj" AnchorPane.rightAnchor="14.0" />
+   </children>
+</AnchorPane>
