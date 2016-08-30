@@ -8,6 +8,7 @@ package com.sczapla.budgetfx.dao;
 import com.sczapla.budgetfx.model.User;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
 public class UserDao {
@@ -25,7 +26,11 @@ public class UserDao {
     }
 
     public User getUserByLoginAndPass(String login) {
-        return (User) em.createQuery("SELECT user FROM User user WHERE user.userName = :userName")
-        .setParameter("userName", login).getSingleResult();
+        try {
+            return (User) em.createQuery("SELECT user FROM User user WHERE user.userName = :userName")
+                    .setParameter("userName", login).getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
 }

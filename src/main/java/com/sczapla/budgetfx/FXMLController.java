@@ -1,5 +1,6 @@
 package com.sczapla.budgetfx;
 
+import com.sczapla.budgetfx.model.User;
 import com.sczapla.budgetfx.service.UserService;
 import java.io.IOException;
 import java.net.URL;
@@ -36,14 +37,17 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void btLoginAction(ActionEvent event) {
-        boolean isLogin = userService.login(txLogin.getText(), txPass.getText());
-        if (isLogin) {
+        User user = userService.login(txLogin.getText(), txPass.getText());
+        if (user != null) {
             Stage stage = null;
             Parent root = null;
             try {
                 stage = (Stage) btLogin.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("/fxml/aplikacja.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/aplikacja.fxml"));
+                root = loader.load();
                 Scene scene = new Scene(root);
+                AplikacjaController apController = loader.getController();
+                apController.initUser(user);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {

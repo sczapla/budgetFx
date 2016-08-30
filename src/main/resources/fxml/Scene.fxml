@@ -11,7 +11,7 @@
    <children>
       <BorderPane prefHeight="279.0" prefWidth="439.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <Label fx:id="lbInfo" alignment="CENTER" prefHeight="35.0" prefWidth="254.0" text="wasj" BorderPane.alignment="CENTER" />
+            <Label fx:id="lbInfo" alignment="CENTER" prefHeight="35.0" prefWidth="432.0" BorderPane.alignment="CENTER" />
          </bottom>
          <top>
             <Label alignment="CENTER" prefHeight="51.0" prefWidth="254.0" text="Logowanie do systemu" BorderPane.alignment="CENTER">
