@@ -32,7 +32,7 @@
                   <HBox>
                      <children>
                         <Label prefHeight="21.0" prefWidth="67.0" text="Hasło" />
-                        <TextField fx:id="txPass" />
+                        <PasswordField fx:id="txPass" />
                      </children>
                   </HBox>
                   <Button fx:id="btLogin" mnemonicParsing="false" onAction="#btLoginAction" prefHeight="31.0" prefWidth="254.0" text="Zaloguj" />
