@@ -14,26 +14,39 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Accordion layoutX="14.0" layoutY="14.0" prefHeight="475.0" prefWidth="246.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="14.0">
-                          <panes>
-                            <TitledPane animated="false" text="untitled 1">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </TitledPane>
-                            <TitledPane animated="false" text="Kategorie">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </TitledPane>
-                            <TitledPane animated="false" prefHeight="789.0" prefWidth="202.0" text="untitled 3">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </TitledPane>
-                          </panes>
-                        </Accordion>
-                        <PieChart layoutX="278.0" layoutY="14.0" prefHeight="461.0" prefWidth="562.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                        <PieChart fx:id="pieChart" layoutX="344.0" layoutY="14.0" prefHeight="454.0" prefWidth="579.0" title="Wydatki - kategorie" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                        <GridPane layoutX="1.0" layoutY="59.0" prefHeight="421.0" prefWidth="341.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Przychody:" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Wydatki:" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Lokaty:" GridPane.rowIndex="2" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Kredyty:" GridPane.rowIndex="3" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Akcje:" GridPane.rowIndex="4" />
+                              <TextField fx:id="txStock" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <TextField fx:id="txInvestment" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <TextField fx:id="txExpense" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <TextField fx:id="txIncome" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" />
+                              <TextField fx:id="txCredit" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="84.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="7.0" prefWidth="7.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="249.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="14.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="336.0" text="Wydatki/przychody" textAlignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </content>
@@ -83,14 +96,75 @@
                            </children>
                         </GridPane>
                         <Button fx:id="btLogout1" layoutX="14.0" layoutY="424.0" mnemonicParsing="false" onAction="#clearAction" prefHeight="31.0" prefWidth="156.0" text="Wyczyść" />
-                        <Button fx:id="btLogout2" layoutX="183.0" layoutY="424.0" mnemonicParsing="false" onAction="#AddAction" prefHeight="31.0" prefWidth="156.0" text="Dodaj" />
+                        <Button fx:id="btLogout2" layoutX="183.0" layoutY="424.0" mnemonicParsing="false" onAction="#addAction" prefHeight="31.0" prefWidth="156.0" text="Dodaj" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Analizowanie">
+            <Tab text="Administrowanie">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btLogout21" layoutX="251.0" layoutY="422.0" mnemonicParsing="false" onAction="#addUserAction" prefHeight="31.0" prefWidth="156.0" text="Dodaj" />
+                        <Button fx:id="btLogout11" layoutX="14.0" layoutY="422.0" mnemonicParsing="false" onAction="#clearUserAction" prefHeight="31.0" prefWidth="156.0" text="Wyczyść" />
+                        <GridPane layoutX="9.0" layoutY="58.0" prefHeight="327.0" prefWidth="419.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Nazwa:" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Hasło" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Email:" GridPane.rowIndex="2" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Rola:" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="cbRole" prefHeight="31.0" prefWidth="258.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <TextField fx:id="txEmail" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <TextField fx:id="txLoginNewUser" GridPane.columnIndex="2" />
+                              <PasswordField fx:id="txPassNewUser" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="84.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="7.0" prefWidth="7.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="249.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="14.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" prefHeight="67.0" prefWidth="469.0" text="Dodaj użytkownika" textAlignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="457.0" prefHeight="67.0" prefWidth="474.0" text="Dodaj kategorie" textAlignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <GridPane layoutX="502.0" layoutY="62.0" prefHeight="310.0" prefWidth="421.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Typ:" />
+                              <ComboBox fx:id="cbType11" prefHeight="31.0" prefWidth="254.0" GridPane.columnIndex="2" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Nazwa:" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Opis:" GridPane.rowIndex="2" />
+                              <TextField fx:id="txCategoryDesc" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <TextField fx:id="txCategoryName" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="84.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="7.0" prefWidth="7.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="249.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="14.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <Button fx:id="btLogout211" layoutX="767.0" layoutY="422.0" mnemonicParsing="false" onAction="#addCategoryAction" prefHeight="31.0" prefWidth="156.0" text="Dodaj" />
+                        <Button fx:id="btLogout111" layoutX="536.0" layoutY="420.0" mnemonicParsing="false" onAction="#clearCategoryAction" prefHeight="31.0" prefWidth="156.0" text="Wyczyść" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
