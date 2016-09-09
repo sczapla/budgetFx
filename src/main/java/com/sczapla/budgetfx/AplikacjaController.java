@@ -7,6 +7,7 @@ package com.sczapla.budgetfx;
 
 import com.sczapla.budgetfx.enums.TransactionType;
 import com.sczapla.budgetfx.model.User;
+import com.sczapla.budgetfx.service.ExpenseService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,12 +21,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -63,6 +67,36 @@ public class AplikacjaController implements Initializable {
     private Button btLogout1;
     @FXML
     private Button btLogout2;
+    @FXML
+    private PieChart pieChart;
+    @FXML
+    private TextField txExpense;
+    @FXML
+    private TextField txIncome;
+    @FXML
+    private Button btLogout21;
+    @FXML
+    private Button btLogout11;
+    @FXML
+    private ComboBox<?> cbRole;
+    @FXML
+    private TextField txEmail;
+    @FXML
+    private TextField txLoginNewUser;
+    @FXML
+    private PasswordField txPassNewUser;
+    @FXML
+    private ComboBox<?> cbType11;
+    @FXML
+    private TextField txCategoryDesc;
+    @FXML
+    private TextField txCategoryName;
+    @FXML
+    private Button btLogout211;
+    @FXML
+    private Button btLogout111;
+    
+    private ExpenseService expenseService = new ExpenseService();
 
     /**
      * Initializes the controller class.
@@ -94,6 +128,9 @@ public class AplikacjaController implements Initializable {
 
     @FXML
     private void filterAction(ActionEvent event) {
+        ObservableList<PieChart.Data> chartList = expenseService.getExpenseCategoryChart();
+        pieChart.setData(chartList);
+        pieChart.setLabelLineLength(10);
     }
 
     @FXML
@@ -101,7 +138,23 @@ public class AplikacjaController implements Initializable {
     }
 
     @FXML
-    private void AddAction(ActionEvent event) {
+    private void addAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void addUserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void clearUserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void addCategoryAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void clearCategoryAction(ActionEvent event) {
     }
     
 }

@@ -19,14 +19,8 @@
                            <children>
                               <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Przychody:" />
                               <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Wydatki:" GridPane.rowIndex="1" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Lokaty:" GridPane.rowIndex="2" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Kredyty:" GridPane.rowIndex="3" />
-                              <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Akcje:" GridPane.rowIndex="4" />
-                              <TextField fx:id="txStock" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                              <TextField fx:id="txInvestment" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               <TextField fx:id="txExpense" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <TextField fx:id="txIncome" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" />
-                              <TextField fx:id="txCredit" editable="false" prefHeight="31.0" prefWidth="216.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                            </children>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="84.0" />
