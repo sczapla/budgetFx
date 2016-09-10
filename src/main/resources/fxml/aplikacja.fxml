@@ -78,7 +78,7 @@
                           </rowConstraints>
                            <children>
                               <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Typ:" />
-                              <ComboBox fx:id="cbType" prefHeight="31.0" prefWidth="254.0" GridPane.columnIndex="2" />
+                              <ComboBox fx:id="cbType" onAction="#cbTypeChanged" prefHeight="31.0" prefWidth="254.0" GridPane.columnIndex="2" />
                               <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Data:" GridPane.rowIndex="1" />
                               <DatePicker fx:id="dpDateIncome" prefHeight="31.0" prefWidth="258.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="Opis:" GridPane.rowIndex="2" />

@@ -6,12 +6,24 @@
 package com.sczapla.budgetfx;
 
 import com.sczapla.budgetfx.enums.TransactionType;
+import com.sczapla.budgetfx.model.ExpenseType;
+import com.sczapla.budgetfx.model.Expenses;
+import com.sczapla.budgetfx.model.IncomeType;
+import com.sczapla.budgetfx.model.Incomes;
+import com.sczapla.budgetfx.model.SettlementType;
 import com.sczapla.budgetfx.model.User;
 import com.sczapla.budgetfx.service.ExpenseService;
+import com.sczapla.budgetfx.service.IncomeService;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,7 +70,7 @@ public class AplikacjaController implements Initializable {
     @FXML
     private DatePicker dpDateIncome;
     @FXML
-    private ComboBox<String> cbCategory;
+    private ComboBox<SettlementType> cbCategory;
     @FXML
     private TextField txPrice;
     @FXML
@@ -97,6 +109,8 @@ public class AplikacjaController implements Initializable {
     private Button btLogout111;
     
     private ExpenseService expenseService = new ExpenseService();
+    private IncomeService incomeService = new IncomeService();
+    private User user;
 
     /**
      * Initializes the controller class.
@@ -106,6 +120,7 @@ public class AplikacjaController implements Initializable {
         cbType.setItems(FXCollections.observableArrayList(TransactionType.values()));
     } 
     public void initUser(User user){
+        this.user = user;
         lbUser.setText(user.getUserName());
         lbRole.setText(user.getUserRoles().get(0).getUserRolePK().getRole().name());
     }
@@ -128,9 +143,10 @@ public class AplikacjaController implements Initializable {
 
     @FXML
     private void filterAction(ActionEvent event) {
-        ObservableList<PieChart.Data> chartList = expenseService.getExpenseCategoryChart();
+        ObservableList<PieChart.Data> chartList = expenseService.getExpenseCategoryChart(getDate(dateFrom.getValue()), getDate(dateTo.getValue()));
         pieChart.setData(chartList);
-        pieChart.setLabelLineLength(10);
+        txIncome.setText(incomeService.getSumExpense(getDate(dateFrom.getValue()), getDate(dateTo.getValue())).toPlainString());
+        txExpense.setText(expenseService.getSumExpense(getDate(dateFrom.getValue()), getDate(dateTo.getValue())).toPlainString());
     }
 
     @FXML
@@ -139,6 +155,24 @@ public class AplikacjaController implements Initializable {
 
     @FXML
     private void addAction(ActionEvent event) {
+        if(cbType.getValue() == TransactionType.EXPENSE){
+            Expenses expense = new Expenses();
+            expense.setAmount(BigDecimal.valueOf(Double.valueOf(txPrice.getText())));
+            expense.setDate(getDate(dpDateIncome.getValue()));
+            expense.setName(txDesc.getText());
+            expense.setType((ExpenseType)cbCategory.getValue());
+            expense.setUser(user);
+            expense.setId(11);
+            expenseService.saveExpense(expense);
+        } else if(cbType.getValue() == TransactionType.INCOME){
+            Incomes income = new Incomes();
+            income.setAmount(BigDecimal.valueOf(Double.valueOf(txPrice.getText())));
+            income.setDate(getDate(dpDateIncome.getValue()));
+            income.setName(txDesc.getText());
+            income.setType((IncomeType)cbCategory.getValue());
+            income.setUser(user);
+            incomeService.saveIncome(income);
+        }
     }
 
     @FXML
@@ -155,6 +189,20 @@ public class AplikacjaController implements Initializable {
 
     @FXML
     private void clearCategoryAction(ActionEvent event) {
+    }
+    
+    private Date getDate(LocalDate date) {
+        Instant instant = Instant.from(date.atStartOfDay(ZoneId.systemDefault()));
+        return Date.from(instant);
+    }
+
+    @FXML
+    private void cbTypeChanged(ActionEvent event) {
+        if(cbType.getValue() == TransactionType.EXPENSE){
+            cbCategory.setItems(expenseService.getAllExpenseType());
+        } else if(cbType.getValue() == TransactionType.INCOME){
+            cbCategory.setItems(incomeService.getAllIncomeType());
+        }
     }
     
 }
