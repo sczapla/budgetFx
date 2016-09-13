@@ -1,11 +1,14 @@
 package com.sczapla.budgetfx.model;
 
+import com.sczapla.budgetfx.enums.TransactionType;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,8 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "incomes")
-public class Incomes implements Serializable {
+@Table(name = "resources")
+public class Resources implements Serializable {
 
     @Id
     @GeneratedValue
@@ -35,8 +38,11 @@ public class Incomes implements Serializable {
     @Column
     private Date date;
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "income_type_id")
-    private IncomeType type;
+    @JoinColumn(name = "resource_category_id")
+    private ResourceCategory category;
+    @Column(name = "transaction_type")
+    @Enumerated(EnumType.ORDINAL)
+    private TransactionType transactionType;
 
     public Integer getId() {
         return id;
@@ -46,7 +52,6 @@ public class Incomes implements Serializable {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
@@ -54,7 +59,6 @@ public class Incomes implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getDescription() {
         return description;
     }
@@ -62,7 +66,6 @@ public class Incomes implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
     public User getUser() {
         return user;
@@ -88,12 +91,20 @@ public class Incomes implements Serializable {
         this.date = date;
     }
 
-    public IncomeType getType() {
-        return type;
+    public ResourceCategory getCategory() {
+        return category;
     }
 
-    public void setType(IncomeType type) {
-        this.type = type;
+    public void setCategory(ResourceCategory category) {
+        this.category = category;
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
     }
 
 }

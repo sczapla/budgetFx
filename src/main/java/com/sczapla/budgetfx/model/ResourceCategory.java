@@ -1,8 +1,11 @@
 package com.sczapla.budgetfx.model;
 
+import com.sczapla.budgetfx.enums.TransactionType;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,8 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "income_type")
-public class IncomeType implements Serializable, SettlementType {
+@Table(name = "resource_category")
+public class ResourceCategory implements Serializable {
 
     @Id
     @GeneratedValue
@@ -24,6 +27,9 @@ public class IncomeType implements Serializable, SettlementType {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_name")
     private User user;
+    @Column(name = "transaction_type")
+    @Enumerated(EnumType.ORDINAL)
+    private TransactionType transactionType;
 
     public int getId() {
         return id;
@@ -40,7 +46,6 @@ public class IncomeType implements Serializable, SettlementType {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getDescription() {
         return description;
     }
@@ -56,10 +61,17 @@ public class IncomeType implements Serializable, SettlementType {
     public void setUser(User user) {
         this.user = user;
     }
-    
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
+
     @Override
     public String toString(){
         return name;
     }
-
 }
