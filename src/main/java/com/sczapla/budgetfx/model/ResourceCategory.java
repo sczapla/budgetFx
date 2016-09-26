@@ -20,13 +20,17 @@ public class ResourceCategory implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    
     @Column
     private String name;
+    
     @Column
     private String description;
+    
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_name")
     private User user;
+    
     @Column(name = "transaction_type")
     @Enumerated(EnumType.ORDINAL)
     private TransactionType transactionType;

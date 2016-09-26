@@ -25,24 +25,27 @@ public class Resources implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
+    
     @Column
     private String name;
+    
     @Column
     private String description;
+    
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_name")
     private User user;
+    
     @Column
     private BigDecimal amount;
+    
     @Temporal(TemporalType.DATE)
     @Column
     private Date date;
+    
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "resource_category_id")
     private ResourceCategory category;
-    @Column(name = "transaction_type")
-    @Enumerated(EnumType.ORDINAL)
-    private TransactionType transactionType;
 
     public Integer getId() {
         return id;
@@ -97,14 +100,6 @@ public class Resources implements Serializable {
 
     public void setCategory(ResourceCategory category) {
         this.category = category;
-    }
-
-    public TransactionType getTransactionType() {
-        return transactionType;
-    }
-
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
     }
 
 }

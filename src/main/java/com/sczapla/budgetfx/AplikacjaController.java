@@ -59,7 +59,7 @@ public class AplikacjaController implements Initializable {
     @FXML
     private Button btLogout;
     @FXML
-    private TableView<?> tvOutcome;
+    private TableView<Resources> tvOutcome;
     @FXML
     private ComboBox<TransactionType> cbType;
     @FXML
@@ -74,12 +74,6 @@ public class AplikacjaController implements Initializable {
     private Button btLogout1;
     @FXML
     private Button btLogout2;
-    @FXML
-    private PieChart pieChart;
-    @FXML
-    private TextField txExpense;
-    @FXML
-    private TextField txIncome;
     @FXML
     private Button btLogout21;
     @FXML
@@ -105,6 +99,10 @@ public class AplikacjaController implements Initializable {
 
     private ResourcesService resourceService = new ResourcesService();
     private User user;
+    @FXML
+    private PieChart pieChartOut;
+    @FXML
+    private PieChart pieChartIn;
 
     /**
      * Initializes the controller class.
@@ -138,14 +136,21 @@ public class AplikacjaController implements Initializable {
 
     @FXML
     private void filterAction(ActionEvent event) {
-        /*ObservableList<PieChart.Data> chartList = resourceService.getExpenseCategoryChart(getDate(dateFrom.getValue()), getDate(dateTo.getValue()));
-        pieChart.setData(chartList);
-        txIncome.setText(resourceService.getSumExpense(getDate(dateFrom.getValue()), getDate(dateTo.getValue())).toPlainString());
-        txExpense.setText(resourceService.getSumExpense(getDate(dateFrom.getValue()), getDate(dateTo.getValue())).toPlainString());*/
+        tvOutcome.getItems().clear();;
+        ObservableList<PieChart.Data> chartListOut = resourceService.getResourceCategoryChart(
+                getDate(dateFrom.getValue()), getDate(dateTo.getValue()), TransactionType.EXPENSE);
+        pieChartOut.setData(chartListOut);
+        ObservableList<PieChart.Data> chartListIn = resourceService.getResourceCategoryChart(
+                getDate(dateFrom.getValue()), getDate(dateTo.getValue()), TransactionType.INCOME);
+        pieChartIn.setData(chartListIn);
+        tvOutcome.getItems().addAll(resourceService.getResources(getDate(dateFrom.getValue()), getDate(dateTo.getValue())));
     }
 
     @FXML
     private void clearAction(ActionEvent event) {
+        txPrice.setText("");
+        dpDateIncome.setValue(null);
+        txDesc.setText("");
     }
 
     @FXML
@@ -156,8 +161,8 @@ public class AplikacjaController implements Initializable {
         resource.setName(txDesc.getText());
         resource.setCategory((ResourceCategory) cbCategory.getValue());
         resource.setUser(user);
-        resource.setTransactionType(cbType.getValue());
         resourceService.saveResource(resource);
+        clearAction(null);
     }
 
     @FXML

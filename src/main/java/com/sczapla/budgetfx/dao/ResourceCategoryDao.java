@@ -16,7 +16,7 @@ import java.util.List;
 public class ResourceCategoryDao extends Dao {
     
     public List<ResourceCategory> getAllResourcesCategory(TransactionType type){
-        return getEntityManager().createQuery("from ResourceCategory transactionType = :type")
+        return getEntityManager().createQuery("from ResourceCategory as resCat where resCat.transactionType = :type")
                 .setParameter("type", type).getResultList();
     }
 }

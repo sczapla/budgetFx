@@ -27,7 +27,7 @@ public class ResourcesService {
     private final ResourcesDao resourcesDao = new ResourcesDao();
     private final ResourceCategoryDao resourcesCategoryDao = new ResourceCategoryDao();
     
-    public ObservableList<PieChart.Data> getExpenseCategoryChart(Date dateFrom, Date dateTo, TransactionType type){
+    public ObservableList<PieChart.Data> getResourceCategoryChart(Date dateFrom, Date dateTo, TransactionType type){
         if(dateFrom == null || dateTo == null){
             return null;
         }
@@ -52,4 +52,10 @@ public class ResourcesService {
     public ObservableList<ResourceCategory> getAllResourceType(TransactionType type){
         return FXCollections.observableArrayList(resourcesCategoryDao.getAllResourcesCategory(type));
     }
+    
+    public List<Resources> getResources(Date dateFrom, Date dateTo){
+        List<Resources> resList = resourcesDao.getResources(dateFrom, dateTo);
+        return resList;
+    }
+    
 }
