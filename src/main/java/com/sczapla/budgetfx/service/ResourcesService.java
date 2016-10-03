@@ -49,6 +49,10 @@ public class ResourcesService {
         resourcesDao.saveResource(resource);
     }
     
+    public void saveResourceCategory(ResourceCategory resource){
+        resourcesCategoryDao.saveOrUpdate(resource);
+    }
+    
     public ObservableList<ResourceCategory> getAllResourceType(TransactionType type){
         return FXCollections.observableArrayList(resourcesCategoryDao.getAllResourcesCategory(type));
     }

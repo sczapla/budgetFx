@@ -21,5 +21,9 @@ public class UserService {
         }
         return ret ? user : null;
     }
+    
+    public void saveNewUser(User newUser){
+        userDao.saveOrUpdate(newUser);
+    }
 
 }

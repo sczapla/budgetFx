@@ -19,4 +19,10 @@ public class ResourceCategoryDao extends Dao {
         return getEntityManager().createQuery("from ResourceCategory as resCat where resCat.transactionType = :type")
                 .setParameter("type", type).getResultList();
     }
+    
+     public void saveOrUpdate(ResourceCategory category) {
+        getEntityManager().getTransaction().begin();
+        getEntityManager().merge(category);
+        getEntityManager().getTransaction().commit();
+    }
 }
